@@ -11,6 +11,10 @@ module.exports = {
       'deep-navy': '#152938',
       'light-gray': '#F2F2F2',
       'off-white': '#FCFCFC'
+    },
+    screens: {
+      tablet: '768px',
+      desktop: '1440px'
     }
   }
 }
