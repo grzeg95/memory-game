@@ -3,6 +3,18 @@
 
 @theme {
   --font-sans: "Atkinson Hyperlegible", sans-serif;
+
+  --color-white: #FFFFFF;
+  --color-amber: #FDA214;
+  --color-steel-blue: #6395B8;
+  --color-light-powder-blue: #BCCED9;
+  --color-midnight-blue: #304859;
+  --color-deep-navy: #152938;
+  --color-light-gray: #F2F2F2;
+  --color-off-white: #FCFCFC;
+
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1440px;
 }
 
 body {
