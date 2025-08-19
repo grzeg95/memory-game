@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {Button} from '../components/ui/Button/Button';
 import {Modal} from '../components/ui/Modal/Modal';
@@ -14,16 +15,21 @@ export function MainMenu() {
   const numberOfPlayers = useSelector((state: RootState)=> state.game.settings.numberOfPlayers);
   const gridSize = useSelector((state: RootState)=> state.game.settings.gridSize);
 
+  const [isOpened, setIsOpened] = useState(true);
+
   function handleOnStartGame() {
-    dispatch(gameActions.initializeGame());
-    dispatch(pagesActions.setPage({page: 'GameBoard'}));
+    setIsOpened(false);
+    setTimeout(() => {
+      dispatch(gameActions.initializeGame());
+      dispatch(pagesActions.setPage({page: 'GameBoard'}));
+    });
   }
 
   return (
     <>
       <div className='absolute w-full h-full bg-deep-navy'></div>
-      <Modal isOpen={true} hasBackdrop={false}>
-        <div className='flex flex-col items-center gap-[45px] tablet:gap-[78px] max-w-[327px] tablet:max-w-[654px] w-full'>
+      <Modal isOpen={isOpened} hasBackdrop={false}>
+        <div className='flex flex-col items-center gap-[45px] tablet:gap-[78px] max-w-[327px] tablet:max-w-[654px] w-full overflow-auto'>
           <div className='text-white text-[2rem] tablet:text-[2.5rem] leading-[40px] tablet:leading-[50px] font-bold'>memory</div>
           <div className='flex flex-col gap-[32px] tablet:gap-[33px] p-[24px] tablet:p-[56px] bg-off-white w-full rounded-[10px]'>
             <div className='flex flex-col gap-[24px]'>

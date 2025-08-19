@@ -39,7 +39,7 @@ export function BoardNav() {
         </div>
         <Button appearance='secondary' className='tablet:hidden' onClick={() => setPauseModalIsOpen(true)}>Pause</Button>
       </nav>
-      {pauseModalIsOpen && <PauseModal onClose={() => setPauseModalIsOpen(false)} />}
+      <PauseModal isOpen={pauseModalIsOpen} onClose={() => setPauseModalIsOpen(false)} />
     </>
   );
 }

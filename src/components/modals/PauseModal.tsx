@@ -7,15 +7,16 @@ import {Button} from '../ui/Button/Button';
 import {Modal} from '../ui/Modal/Modal';
 
 const modalContentStyles = cva([
-  'flex', 'flex-col', 'gap-[16px]', 'p-[24px]', 'bg-off-white', 'rounded-[10px]', 'max-w-[327px]', 'w-full',
+  'flex', 'flex-col', 'gap-[16px]', 'p-[24px]', 'bg-off-white', 'rounded-[10px]', 'max-w-[327px]', 'w-full', 'overflow-auto',
   'tablet:max-w-[654px]', 'tablet:gap-[25px]'
 ]);
 
 type PauseModal = {
   onClose: (event: number | string | object | null | undefined) => void;
+  isOpen: boolean;
 }
 
-export function PauseModal({onClose}: PauseModal) {
+export function PauseModal({onClose, isOpen}: PauseModal) {
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -24,22 +25,29 @@ export function PauseModal({onClose}: PauseModal) {
   }
 
   function handleResumeGame() {
-    onClose(undefined);
+    close();
   }
 
   function handleNewGame() {
-    dispatch(pagesActions.setPage({page: 'MainMenu'}));
+
     close();
+
+    setTimeout(() => {
+      dispatch(pagesActions.setPage({page: 'MainMenu'}));
+    });
   }
 
   function handleRestartGame() {
-    dispatch(gameActions.initializeGame());
-    dispatch(gameActions.setTimerState({state: 'restart'}));
     close();
+
+    setTimeout(() => {
+      dispatch(gameActions.initializeGame());
+      dispatch(gameActions.setTimerState({state: 'restart'}));
+    });
   }
 
   return (
-    <Modal isOpen={true} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={onClose}>
       <div className={modalContentStyles()}>
         <Button size='big' className='w-full' onClick={() => handleRestartGame()}>
           Restart

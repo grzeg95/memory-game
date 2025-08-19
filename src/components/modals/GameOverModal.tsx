@@ -1,4 +1,5 @@
 import {cva} from 'class-variance-authority';
+import {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {gameActions} from '../../state/gameSlice';
 import {pagesActions} from '../../state/pagesSlice';
@@ -6,10 +7,10 @@ import type {AppDispatch, RootState} from '../../state/store';
 import {timerFormater} from '../../utils/timerFormater';
 import {Button} from '../ui/Button/Button';
 import {Modal} from '../ui/Modal/Modal';
-import { ScoreCard } from '../stats/ScoreCard';
+import {ScoreCard} from '../stats/ScoreCard';
 
 const modalContentStyles = cva([
-  'flex', 'flex-col', 'gap-[16px]', 'p-[24px]', 'bg-off-white', 'rounded-[10px]', 'max-w-[327px]', 'w-full',
+  'flex', 'flex-col', 'gap-[16px]', 'p-[24px]', 'bg-off-white', 'rounded-[10px]', 'max-w-[327px]', 'w-full', 'overflow-auto',
   'tablet:max-w-[654px]', 'tablet:gap-[40px]',
 ]);
 
@@ -24,6 +25,7 @@ export function GameOverModal() {
   const playersScores = useSelector((state: RootState) => state.game.game.playersScores);
   const numberOfMoves = useSelector((state: RootState) => state.game.game.numberOfMoves);
   const elapsed = useSelector((state: RootState) => state.game.game.timer.elapsed);
+  const [isOpened, setIsOpened] = useState(true);
 
   const maxScore = Math.max(...playersScores);
 
@@ -39,15 +41,21 @@ export function GameOverModal() {
   const oneWinnerIndex = winners.length === 1 ? winners[0].playerIndex : -1;
 
   function handleRestartGame() {
-    dispatch(gameActions.initializeGame());
+    setIsOpened(false);
+    setTimeout(() => {
+      dispatch(gameActions.initializeGame());
+    });
   }
 
   function handleSetupNewGame() {
-    dispatch(pagesActions.setPage({page: 'MainMenu'}));
+    setIsOpened(false);
+    setTimeout(() => {
+      dispatch(pagesActions.setPage({page: 'MainMenu'}));
+    });
   }
 
   return (
-    <Modal isOpen={true}>
+    <Modal isOpen={isOpened} onClose={() => setIsOpened(false)}>
       <div className={modalContentStyles()}>
 
         <div className='flex flex-col gap-[9px] items-center tablet:gap-[16px]'>
