@@ -4,13 +4,13 @@ type Theme = 'numbers' | 'icons'
 type NumberOfPlayers = 1 | 2 | 3 | 4;
 type GridSize = 4 | 6;
 
-interface Settings {
+type Settings = {
   theme: Theme;
   numberOfPlayers: NumberOfPlayers;
   gridSize: GridSize
 }
 
-interface GameState {
+type GameState = {
   settings: Settings
 }
 
@@ -24,15 +24,15 @@ const initialState: GameState = {
 
 const setTheme: CaseReducer<GameState, PayloadAction<{theme: Theme}>> = (state, action) => {
   state.settings.theme = action.payload.theme;
-}
+};
 
 const setNumberOfPlayers: CaseReducer<GameState, PayloadAction<{numberOfPlayers: NumberOfPlayers}>> = (state, action) => {
   state.settings.numberOfPlayers = action.payload.numberOfPlayers;
-}
+};
 
 const setGridSize: CaseReducer<GameState, PayloadAction<{gridSize: GridSize}>> = (state, action) => {
   state.settings.gridSize = action.payload.gridSize;
-}
+};
 
 const gameSlice = createSlice({
   name: 'game',
