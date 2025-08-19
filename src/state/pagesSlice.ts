@@ -1,6 +1,6 @@
 import {type CaseReducer, createSlice, type PayloadAction} from '@reduxjs/toolkit';
 
-type Page = 'MainMenu' | 'Board';
+type Page = 'MainMenu' | 'GameBoard';
 
 interface PagesState {
   page: Page;
