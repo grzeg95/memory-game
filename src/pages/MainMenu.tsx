@@ -3,6 +3,7 @@ import {Button} from '../components/ui/Button/Button';
 import {Modal} from '../components/ui/Modal/Modal';
 import {Selection} from '../components/ui/Selection/Selection';
 import {gameActions} from '../state/gameSlice';
+import {pagesActions} from '../state/pagesSlice';
 import type {AppDispatch, RootState} from '../state/store';
 
 export function MainMenu() {
@@ -12,6 +13,11 @@ export function MainMenu() {
   const theme = useSelector((state: RootState)=> state.game.settings.theme);
   const numberOfPlayers = useSelector((state: RootState)=> state.game.settings.numberOfPlayers);
   const gridSize = useSelector((state: RootState)=> state.game.settings.gridSize);
+
+  function handleOnStartGame() {
+    dispatch(gameActions.initializeGame());
+    dispatch(pagesActions.setPage({page: 'GameBoard'}));
+  }
 
   return (
     <>
@@ -45,7 +51,7 @@ export function MainMenu() {
                 </div>
               </div>
             </div>
-            <Button size='big' className='w-full'>Start Game</Button>
+            <Button size='big' className='w-full' onClick={handleOnStartGame}>Start Game</Button>
           </div>
         </div>
       </Modal>
