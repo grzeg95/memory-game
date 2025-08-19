@@ -78,7 +78,7 @@ export function GameOverModal() {
               {scores.map((score, index) => (
                 <ScoreCard
                   key={index}
-                  title={`Player ${score.playerIndex + 1}${score.winner && ' (Winner!)'}`}
+                  title={`Player ${score.playerIndex + 1}${score.winner ? ' (Winner!)' : ''}`}
                   value={`${score.score} Pairs`}
                   highlighted={score.winner}
                 />
