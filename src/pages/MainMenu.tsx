@@ -22,14 +22,14 @@ export function MainMenu() {
           <div className='flex flex-col gap-[32px] tablet:gap-[33px] p-[24px] tablet:p-[56px] bg-off-white w-full rounded-[10px]'>
             <div className='flex flex-col gap-[24px]'>
               <div className='flex flex-col gap-[11px] tablet:gap-[16px]'>
-                <div className='text-[0.9375rem] leading-[19px] tablet:text-[1.25rem] tablet:leading-[25px] text-[#7191A5] font-bold'>Select Theme</div>
+                <div className='text-[0.9375rem] leading-[19px] tablet:text-[1.25rem] tablet:leading-[25px] text-slate-blue font-bold'>Select Theme</div>
                 <div className='flex gap-[11px] tablet:gap-[30px]'>
                   <Selection isActive={theme === 'numbers'} className='w-full' onClick={() => dispatch(gameActions.setTheme({theme: 'numbers'}))}>Numbers</Selection>
                   <Selection isActive={theme === 'icons'} className='w-full' onClick={() => dispatch(gameActions.setTheme({theme: 'icons'}))}>Icons</Selection>
                 </div>
               </div>
               <div className='flex flex-col gap-[11px] tablet:gap-[16px]'>
-                <div className='text-[0.9375rem] leading-[19px] tablet:text-[1.25rem] tablet:leading-[25px] text-[#7191A5] font-bold'>Numbers of Players</div>
+                <div className='text-[0.9375rem] leading-[19px] tablet:text-[1.25rem] tablet:leading-[25px] text-slate-blue font-bold'>Numbers of Players</div>
                 <div className='flex gap-[11px] tablet:gap-[20px]'>
                   <Selection isActive={numberOfPlayers === 1} className='w-full' onClick={() => dispatch(gameActions.setNumberOfPlayers({numberOfPlayers: 1}))}>1</Selection>
                   <Selection isActive={numberOfPlayers === 2} className='w-full' onClick={() => dispatch(gameActions.setNumberOfPlayers({numberOfPlayers: 2}))}>2</Selection>
@@ -38,7 +38,7 @@ export function MainMenu() {
                 </div>
               </div>
               <div className='flex flex-col gap-[11px] tablet:gap-[16px]'>
-                <div className='text-[0.9375rem] leading-[19px] tablet:text-[1.25rem] tablet:leading-[25px] text-[#7191A5] font-bold'>Grid Size</div>
+                <div className='text-[0.9375rem] leading-[19px] tablet:text-[1.25rem] tablet:leading-[25px] text-slate-blue font-bold'>Grid Size</div>
                 <div className='flex gap-[11px] tablet:gap-[30px]'>
                   <Selection isActive={gridSize === 4} className='w-full' onClick={() => dispatch(gameActions.setGridSize({gridSize: 4}))}>4x4</Selection>
                   <Selection isActive={gridSize === 6} className='w-full' onClick={() => dispatch(gameActions.setGridSize({gridSize: 6}))}>6x6</Selection>
