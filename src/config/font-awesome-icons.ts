@@ -1,0 +1,42 @@
+import {
+  faAlarmClock,
+  faBell,
+  faBusSide,
+  faCalendar,
+  faCamera,
+  faCloud,
+  faCoffee,
+  faComment,
+  faEnvelope,
+  faEye,
+  faFile,
+  faHeadphones,
+  faHouse,
+  faImage,
+  faSmile,
+  faThumbsUp,
+  faTruck,
+  faUser,
+  type IconDefinition
+} from '@fortawesome/free-solid-svg-icons'
+
+export const fontAwesomeIcons: IconDefinition[] = [
+  faCoffee,
+  faBusSide,
+  faHouse,
+  faImage,
+  faFile,
+  faCamera,
+  faCalendar,
+  faCloud,
+  faAlarmClock,
+  faTruck,
+  faThumbsUp,
+  faSmile,
+  faHeadphones,
+  faBell,
+  faUser,
+  faComment,
+  faEnvelope,
+  faEye
+];
