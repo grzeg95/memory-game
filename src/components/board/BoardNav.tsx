@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux';
 import {gameActions} from '../../state/gameSlice';
 import {pagesActions} from '../../state/pagesSlice';
 import type {AppDispatch} from '../../state/store';
-import {PauseModal} from '../modals/PauseModal';
+import {PauseModal} from '../dialogs/PauseDialog';
 import {Button} from '../ui/Button/Button';
 
 export function BoardNav() {

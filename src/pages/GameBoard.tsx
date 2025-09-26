@@ -2,7 +2,7 @@ import {cva} from 'class-variance-authority';
 import {useSelector} from 'react-redux';
 import {BoardNav} from '../components/board/BoardNav';
 import {MultiPlayerStats} from '../components/stats/MultiPlayerStats';
-import {GameOverModal} from '../components/modals/GameOverModal';
+import {GameOverDialog} from '../components/dialogs/GameOverDialog';
 import {SinglePlayerStats} from '../components/stats/SinglePlayerStats';
 import {Tiles} from '../components/board/Tiles';
 import type {RootState} from '../state/store';
@@ -26,7 +26,7 @@ export function GameBoard() {
         <Tiles/>
         {numberOfPlayers === 1 ? <SinglePlayerStats/> : <MultiPlayerStats/>}
       </div>
-      {isOver && <GameOverModal/>}
+      {isOver && <GameOverDialog/>}
     </>
   );
 }

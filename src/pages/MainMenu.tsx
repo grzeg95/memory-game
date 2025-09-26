@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {Button} from '../components/ui/Button/Button';
-import {Modal} from '../components/ui/Modal/Modal';
+import {Dialog} from '../components/ui/Dialog/Dialog';
 import {Selection} from '../components/ui/Selection/Selection';
 import {gameActions} from '../state/gameSlice';
 import {pagesActions} from '../state/pagesSlice';
@@ -28,8 +28,8 @@ export function MainMenu() {
   return (
     <>
       <div className='absolute w-full h-full bg-deep-navy'></div>
-      <Modal isOpen={isOpened} hasBackdrop={false}>
-        <div className='flex flex-col items-center gap-[45px] tablet:gap-[78px] max-w-[327px] tablet:max-w-[654px] w-full overflow-auto'>
+      <Dialog isOpen={isOpened} hasBackdrop={false}>
+        <div className='flex flex-col items-center gap-[45px] tablet:gap-[78px] w-[327px] tablet:w-[654px] overflow-auto'>
           <div className='text-white text-[2rem] tablet:text-[2.5rem] leading-[40px] tablet:leading-[50px] font-bold'>memory</div>
           <div className='flex flex-col gap-[32px] tablet:gap-[33px] p-[24px] tablet:p-[56px] bg-off-white w-full rounded-[10px]'>
             <div className='flex flex-col gap-[24px]'>
@@ -60,7 +60,7 @@ export function MainMenu() {
             <Button size='big' className='w-full' onClick={handleOnStartGame}>Start Game</Button>
           </div>
         </div>
-      </Modal>
+      </Dialog>
     </>
   );
 }

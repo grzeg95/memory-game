@@ -6,19 +6,19 @@ import {pagesActions} from '../../state/pagesSlice';
 import type {AppDispatch, RootState} from '../../state/store';
 import {timerFormater} from '../../utils/timerFormater';
 import {Button} from '../ui/Button/Button';
-import {Modal} from '../ui/Modal/Modal';
 import {ScoreCard} from '../stats/ScoreCard';
+import {Dialog} from '../ui/Dialog/Dialog';
 
 const modalContentStyles = cva([
-  'flex', 'flex-col', 'gap-[16px]', 'p-[24px]', 'bg-off-white', 'rounded-[10px]', 'max-w-[327px]', 'w-full', 'overflow-auto',
-  'tablet:max-w-[654px]', 'tablet:gap-[40px]',
+  'flex', 'flex-col', 'gap-[16px]', 'p-[24px]', 'bg-off-white', 'rounded-[10px]', 'w-[327px]', 'w-full', 'overflow-auto',
+  'tablet:w-[654px]', 'tablet:gap-[40px]',
 ]);
 
 const scoreCardsStyles = cva([
   'flex', 'flex-col', 'gap-[8px]'
 ]);
 
-export function GameOverModal() {
+export function GameOverDialog() {
 
   const dispatch = useDispatch<AppDispatch>();
   const numberOfPlayers = useSelector((state: RootState) => state.game.settings.numberOfPlayers);
@@ -55,7 +55,7 @@ export function GameOverModal() {
   }
 
   return (
-    <Modal isOpen={isOpened} onClose={() => setIsOpened(false)}>
+    <Dialog isOpen={isOpened} closeOnBackdropClick={false} onClose={() => setIsOpened(false)}>
       <div className={modalContentStyles()}>
 
         <div className='flex flex-col gap-[9px] items-center tablet:gap-[16px]'>
@@ -92,6 +92,6 @@ export function GameOverModal() {
           <Button appearance='secondary' className='w-full' onClick={() => handleSetupNewGame()}>Setup New Game</Button>
         </div>
       </div>
-    </Modal>
+    </Dialog>
   )
 }

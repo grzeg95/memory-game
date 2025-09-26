@@ -4,19 +4,19 @@ import {gameActions} from '../../state/gameSlice';
 import {pagesActions} from '../../state/pagesSlice';
 import type {AppDispatch} from '../../state/store';
 import {Button} from '../ui/Button/Button';
-import {Modal} from '../ui/Modal/Modal';
+import {Dialog} from '../ui/Dialog/Dialog';
 
 const modalContentStyles = cva([
-  'flex', 'flex-col', 'gap-[16px]', 'p-[24px]', 'bg-off-white', 'rounded-[10px]', 'max-w-[327px]', 'w-full', 'overflow-auto',
+  'flex', 'flex-col', 'gap-[16px]', 'p-[24px]', 'bg-off-white', 'rounded-[10px]', 'w-[327px]', 'w-full', 'overflow-auto',
   'tablet:max-w-[654px]', 'tablet:gap-[25px]'
 ]);
 
-type PauseModal = {
+type PauseDialog = {
   onClose: (event: number | string | object | null | undefined) => void;
   isOpen: boolean;
 }
 
-export function PauseModal({onClose, isOpen}: PauseModal) {
+export function PauseModal({onClose, isOpen}: PauseDialog) {
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -47,7 +47,7 @@ export function PauseModal({onClose, isOpen}: PauseModal) {
   }
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Dialog isOpen={isOpen} onClose={onClose}>
       <div className={modalContentStyles()}>
         <Button size='big' className='w-full' onClick={() => handleRestartGame()}>
           Restart
@@ -59,6 +59,6 @@ export function PauseModal({onClose, isOpen}: PauseModal) {
           Resume Game
         </Button>
       </div>
-    </Modal>
+    </Dialog>
   )
 }

@@ -22,3 +22,18 @@ body {
   font-weight: 700;
   font-size: var(--text-lg);
 }
+
+#overlay-root {
+
+  position: fixed;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+
+  &:empty {
+    display: none;
+  }
+}
